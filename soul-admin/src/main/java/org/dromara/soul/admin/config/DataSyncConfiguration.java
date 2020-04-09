@@ -16,7 +16,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * The type Data sync configuration.
- *
+ * 类型数据同步配置
  * @author xiaoyu
  * @author huangxiaofeng
  */
@@ -65,7 +65,7 @@ public class DataSyncConfiguration {
 
         /**
          * Config event listener data changed listener.
-         *
+         * 配置事件监听器数据更改监听器
          * @return the data changed listener
          */
         @Bean
@@ -75,7 +75,7 @@ public class DataSyncConfiguration {
 
         /**
          * Websocket collector websocket collector.
-         *
+         * Websocket收集器
          * @return the websocket collector
          */
         @Bean
@@ -85,7 +85,7 @@ public class DataSyncConfiguration {
 
         /**
          * Server endpoint exporter server endpoint exporter.
-         *
+         * 服务器端点出口商服务器端点出口商
          * @return the server endpoint exporter
          */
         @Bean

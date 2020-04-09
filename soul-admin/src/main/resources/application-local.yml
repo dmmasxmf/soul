@@ -22,9 +22,10 @@ mybatis:
 
 
 soul:
-  http:
-    register: false
-    zookeeperUrl: localhost:2181
+#  http:
+#    # 服务注册
+#    register: false
+#    zookeeperUrl: localhost:2181
   sync:
     strategy: websocket
 #      zookeeper:

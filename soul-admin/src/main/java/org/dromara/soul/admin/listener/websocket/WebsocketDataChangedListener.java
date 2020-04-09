@@ -33,7 +33,7 @@ import java.util.List;
 
 /**
  * The type Websocket data changed listener.
- *
+ * 类型Websocket数据更改了监听器
  * @author xiaoyu(Myth)
  * @author huangxiaofeng
  * @since 2.0.0
@@ -42,6 +42,7 @@ public class WebsocketDataChangedListener extends AbstractDataChangedListener im
 
     @Override
     public void onPluginChanged(final List<PluginData> pluginDataList, final DataEventTypeEnum eventType) {
+        //组为插件 事件是增删改查
         WebsocketData<PluginData> websocketData =
                 new WebsocketData<>(ConfigGroupEnum.PLUGIN.name(), eventType.name(), pluginDataList);
         WebsocketCollector.send(GsonUtils.getInstance().toJson(websocketData), eventType);

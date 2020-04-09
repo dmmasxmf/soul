@@ -67,6 +67,10 @@ public class SyncDataServiceImpl implements SyncDataService {
      */
     private final RuleService ruleService;
 
+    /**
+     * 上下文事件发布
+     */
+
     private final ApplicationEventPublisher eventPublisher;
 
     /**
@@ -98,6 +102,7 @@ public class SyncDataServiceImpl implements SyncDataService {
     public boolean syncAll(final DataEventTypeEnum type) {
         appAuthService.syncData();
         List<PluginData> pluginDataList = pluginService.listAll();
+        //事件发布
         eventPublisher.publishEvent(new DataChangedEvent(ConfigGroupEnum.PLUGIN, type, pluginDataList));
         List<SelectorData> selectorDataList = selectorService.listAll();
         eventPublisher.publishEvent(new DataChangedEvent(ConfigGroupEnum.SELECTOR, type, selectorDataList));

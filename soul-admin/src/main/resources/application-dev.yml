@@ -21,6 +21,8 @@ mybatis:
   type-aliases-package: org.dromara.soul.admin.entity
   mapper-locations: classpath:/mappers/*.xml
 
+# 数据同步策略
+
 soul:
   sync:
       strategy: zookeeper

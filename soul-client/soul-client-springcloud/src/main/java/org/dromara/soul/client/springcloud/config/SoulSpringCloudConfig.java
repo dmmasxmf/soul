@@ -24,7 +24,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * The type Soul http config.
- *
+ *  获取配置文件
  * @author xiaoyu
  */
 @Data

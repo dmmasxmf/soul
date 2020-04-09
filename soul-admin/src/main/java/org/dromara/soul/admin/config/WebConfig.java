@@ -24,7 +24,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * web handler.
- *
+ * 跨域的解决 myself我自己
  * @author xiaoyu(Myth)
  */
 @Configuration

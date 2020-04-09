@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 
 /**
  * The type Soul client bean post processor.
- *
+ * 元数据更新
  * @author xiaoyu(Myth)
  */
 @Slf4j
@@ -75,6 +75,13 @@ public class SoulSpringCloudClientBeanPostProcessor implements BeanPostProcessor
         return bean;
     }
 
+    /**
+     * push 元数据
+     * @param bean
+     * @param beanName
+     * @return
+     * @throws BeansException
+     */
     @Override
     public Object postProcessAfterInitialization(@NonNull final Object bean, @NonNull final String beanName) throws BeansException {
         Controller controller = AnnotationUtils.findAnnotation(bean.getClass(), Controller.class);
@@ -96,9 +103,14 @@ public class SoulSpringCloudClientBeanPostProcessor implements BeanPostProcessor
                 }
             }
         }
+
         return bean;
     }
 
+    /**
+     * 向服务端push数据
+     * @param json
+     */
     private void post(final String json) {
         try {
             String result = OkHttpTools.getInstance().post(url, json);

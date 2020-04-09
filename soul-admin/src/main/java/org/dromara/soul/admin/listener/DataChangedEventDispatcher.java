@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * Event forwarders, which forward the changed events to each ConfigEventListener.
- *
+ * 上下文监听
  * @author huangxiaofeng
  * @author xiaoyu
  */
@@ -49,6 +49,10 @@ public class DataChangedEventDispatcher implements ApplicationListener<DataChang
         this.applicationContext = applicationContext;
     }
 
+    /**
+     * 入缓存
+     * @param event
+     */
     @Override
     @SuppressWarnings("unchecked")
     public void onApplicationEvent(final DataChangedEvent event) {

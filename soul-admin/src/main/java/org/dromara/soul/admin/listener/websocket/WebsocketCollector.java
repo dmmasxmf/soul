@@ -71,6 +71,7 @@ public class WebsocketCollector {
     public void onMessage(final String message, final Session session) {
         if (message.equals(DataEventTypeEnum.MYSELF.name())) {
             WebsocketCollector.session = session;
+            //上下文文件传入
             SpringBeanUtils.getInstance().getBean(SyncDataService.class).syncAll(DataEventTypeEnum.MYSELF);
         }
     }

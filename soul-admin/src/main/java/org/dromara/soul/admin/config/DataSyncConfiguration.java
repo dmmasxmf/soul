@@ -16,7 +16,7 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
  * The type Data sync configuration.
- * 类型数据同步配置
+ * 类型数据同步配置，目前存在websocket,httplog,zk，根据配置不同获取不同的推送模式
  * @author xiaoyu
  * @author huangxiaofeng
  */
@@ -25,6 +25,8 @@ public class DataSyncConfiguration {
 
     /**
      * http long polling(default strategy).
+     * ConditionalOnMissingBean 导入接口
+     * Import 实现入值
      */
     @Configuration
     @ConditionalOnMissingBean(DataChangedListener.class)
@@ -65,7 +67,7 @@ public class DataSyncConfiguration {
 
         /**
          * Config event listener data changed listener.
-         * 配置事件监听器数据更改监听器
+         * 配置事件监听器数据更改监听器，使用了后置初始化
          * @return the data changed listener
          */
         @Bean
@@ -75,7 +77,7 @@ public class DataSyncConfiguration {
 
         /**
          * Websocket collector websocket collector.
-         * Websocket收集器
+         * Websocket收集器，开启站点，
          * @return the websocket collector
          */
         @Bean

@@ -40,14 +40,25 @@ import java.util.List;
  */
 public class WebsocketDataChangedListener extends AbstractDataChangedListener implements DataChangedListener {
 
+    /**
+     * 插件更新
+     * @param pluginDataList
+     * @param eventType the event type
+     */
     @Override
     public void onPluginChanged(final List<PluginData> pluginDataList, final DataEventTypeEnum eventType) {
         //组为插件 事件是增删改查
         WebsocketData<PluginData> websocketData =
                 new WebsocketData<>(ConfigGroupEnum.PLUGIN.name(), eventType.name(), pluginDataList);
+        //发送消息
         WebsocketCollector.send(GsonUtils.getInstance().toJson(websocketData), eventType);
     }
 
+    /**
+     * 选择器更新
+     * @param selectorDataList
+     * @param eventType the event type
+     */
     @Override
     public void onSelectorChanged(final List<SelectorData> selectorDataList, final DataEventTypeEnum eventType) {
         WebsocketData<SelectorData> websocketData =

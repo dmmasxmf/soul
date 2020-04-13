@@ -100,14 +100,20 @@ public class SyncDataServiceImpl implements SyncDataService {
 
     @Override
     public boolean syncAll(final DataEventTypeEnum type) {
+        //同步认证数据,加判断
         appAuthService.syncData();
+        //推送插件，直接推送
         List<PluginData> pluginDataList = pluginService.listAll();
         //事件发布
         eventPublisher.publishEvent(new DataChangedEvent(ConfigGroupEnum.PLUGIN, type, pluginDataList));
+        //推送选择器
         List<SelectorData> selectorDataList = selectorService.listAll();
+
         eventPublisher.publishEvent(new DataChangedEvent(ConfigGroupEnum.SELECTOR, type, selectorDataList));
+        //推送规则
         List<RuleData> ruleDataList = ruleService.listAll();
         eventPublisher.publishEvent(new DataChangedEvent(ConfigGroupEnum.RULE, type, ruleDataList));
+        //推送元数据
         metaDataService.syncData();
         return true;
     }

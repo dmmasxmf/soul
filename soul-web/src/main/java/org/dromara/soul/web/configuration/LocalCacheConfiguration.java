@@ -89,6 +89,7 @@ public class LocalCacheConfiguration {
 
     /**
      * The type Websocket cache manager.
+     * 匹配到他执行
      */
     @Configuration
     @ConditionalOnMissingBean(LocalCacheManager.class)
@@ -97,7 +98,7 @@ public class LocalCacheConfiguration {
 
         /**
          * Local cache manager local cache manager.
-         *
+         * 执行那个bean
          * @param soulConfig the soul config
          * @return the local cache manager
          */

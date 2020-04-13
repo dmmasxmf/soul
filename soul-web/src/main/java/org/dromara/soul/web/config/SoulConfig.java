@@ -26,7 +26,7 @@ import java.io.Serializable;
 
 /**
  * The type Soul config.
- *
+ * 大类
  * @author xiaoyu(Myth)
  */
 @Data
@@ -46,16 +46,18 @@ public class SoulConfig implements Serializable {
 
     /**
      * The type Sync.
+     * sync 一般类
      */
     @Data
     public static class Sync {
 
         private String strategy;
 
+        //zk配置类
         private ZookeeperConfig zookeeper;
-
+        //http 配置类
         private HttpConfig http;
-
+        //ws 配置类
         private WebsocketConfig websocket;
 
     }
@@ -77,6 +79,9 @@ public class SoulConfig implements Serializable {
         private String url;
     }
 
+    /**
+     * 同步限制
+     */
     @Data
     public static class Disruptor {
 

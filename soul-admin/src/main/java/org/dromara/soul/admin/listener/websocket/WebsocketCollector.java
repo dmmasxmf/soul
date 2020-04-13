@@ -63,15 +63,16 @@ public class WebsocketCollector {
 
     /**
      * On message.
-     *
+     * 服务器接收消息
      * @param message the message
      * @param session the session
      */
     @OnMessage
     public void onMessage(final String message, final Session session) {
+        //如果为myself,则执行同步数据
         if (message.equals(DataEventTypeEnum.MYSELF.name())) {
             WebsocketCollector.session = session;
-            //上下文文件传入
+            //上下文文件传入，包括 创建，选择器，规则
             SpringBeanUtils.getInstance().getBean(SyncDataService.class).syncAll(DataEventTypeEnum.MYSELF);
         }
     }
@@ -102,7 +103,7 @@ public class WebsocketCollector {
 
     /**
      * Send.
-     *
+     * 发送消息
      * @param message the message
      * @param type    the type
      */

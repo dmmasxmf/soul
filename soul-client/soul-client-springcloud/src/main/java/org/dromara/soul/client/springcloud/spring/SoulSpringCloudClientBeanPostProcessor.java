@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 
 /**
  * The type Soul client bean post processor.
- * 元数据更新
+ * 元数据更新，推送注入
  * @author xiaoyu(Myth)
  */
 @Slf4j
@@ -124,15 +124,30 @@ public class SoulSpringCloudClientBeanPostProcessor implements BeanPostProcessor
         }
     }
 
+    /**
+     * 封装数据原型
+     * @param soulClient
+     * @param contextPath
+     * @param bean
+     * @param method
+     * @return
+     */
     private String buildJsonParams(final SoulClient soulClient, final String contextPath, final Object bean, final Method method) {
+
+        //应用名
         String appName = soulSpringCloudConfig.getAppName();
         if (appName == null || "".equals(appName)) {
             appName = env.getProperty("spring.application.name");
         }
+        //路径名
         String path = contextPath + soulClient.path();
+        //说明
         String desc = soulClient.desc();
+        //服务名
         String serviceName = bean.getClass().getSimpleName();
+        //方法名
         String methodName = method.getName();
+        //参数
         Class<?>[] parameterTypesClazz = method.getParameterTypes();
         String parameterTypes = Arrays.stream(parameterTypesClazz).map(Class::getName).collect(Collectors.joining(","));
         MetaDataDTO metaDataDTO = MetaDataDTO.builder()

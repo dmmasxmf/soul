@@ -20,17 +20,23 @@
 package org.dromara.soul.client.springcloud.config;
 
 import lombok.Data;
+import lombok.experimental.var;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import javax.validation.Valid;
 
 /**
  * The type Soul http config.
- *  获取配置文件
+ *  获取配置文件，就是一個start，在类加载的时候会启动他，获取配置
  * @author xiaoyu
  */
 @Data
 @ConfigurationProperties(prefix = "soul.springcloud")
 public class SoulSpringCloudConfig {
 
+
+//    protected static final String PREFIX= "soul.springcloud";
     private String adminUrl;
 
     private String contextPath;

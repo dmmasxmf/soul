@@ -34,7 +34,7 @@ import java.util.List;
 
 /**
  * Event forwarders, which forward the changed events to each ConfigEventListener.
- * 上下文监听
+ * 上下文监听 DataChangedEvent 事件
  * @author huangxiaofeng
  * @author xiaoyu
  */
@@ -50,15 +50,17 @@ public class DataChangedEventDispatcher implements ApplicationListener<DataChang
     }
 
     /**
-     * 入缓存
+     * 入数据库，监听到事件
      * @param event
      */
     @Override
     @SuppressWarnings("unchecked")
     public void onApplicationEvent(final DataChangedEvent event) {
+        //迭代监听器，根据类型根据监听推送数据入库 list数据 目前listen 只有一个
         for (DataChangedListener listener : listeners) {
             switch (event.getGroupKey()) {
                 case APP_AUTH:
+                    //触发事件，数据+动作
                     listener.onAppAuthChanged((List<AppAuthData>) event.getSource(), event.getEventType());
                     break;
                 case PLUGIN:
@@ -79,8 +81,12 @@ public class DataChangedEventDispatcher implements ApplicationListener<DataChang
         }
     }
 
+    /**
+     * 初始化完成，数据监听器的注入 有三种
+     */
     @Override
     public void afterPropertiesSet() {
+        //根据具体需求注入监听实现
         Collection<DataChangedListener> listenerBeans = applicationContext.getBeansOfType(DataChangedListener.class).values();
         this.listeners = Collections.unmodifiableList(new ArrayList<>(listenerBeans));
     }

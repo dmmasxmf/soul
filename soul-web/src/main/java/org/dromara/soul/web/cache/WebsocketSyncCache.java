@@ -43,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * The type Websocket sync cache.
- *
+ * websocket 同步
  * @author xiaoyu(Myth)
  */
 public class WebsocketSyncCache extends WebsocketCacheHandler {

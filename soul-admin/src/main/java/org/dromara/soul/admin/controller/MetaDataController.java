@@ -124,7 +124,7 @@ public class MetaDataController {
 
     /**
      * Register string.
-     *
+     * 元数据注入
      * @param metaDataDTO the meta data dto
      * @return the string
      */

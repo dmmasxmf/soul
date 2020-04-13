@@ -28,7 +28,7 @@ import org.springframework.core.env.Environment;
 
 /**
  * The type Soul spring mvc auto configuration.
- * 初始化使用
+ * 初始化使用，加载配置，自动注入
  * @author xiaoyu
  */
 @Configuration

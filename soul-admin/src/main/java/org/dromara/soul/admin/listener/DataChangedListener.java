@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * Event listener, used to send notification of event changes,
  * used to support HTTP, websocket, zookeeper and other event notifications.
- *
+ * 数据更新监听
  * @author huangxiaofeng
  * @author xiaoyu
  */
